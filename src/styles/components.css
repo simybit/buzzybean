@@ -372,13 +372,14 @@
 }
 .story-media {
   position: relative;
-  height: 100%;
-  min-height: 34rem;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1376 / 768;
   margin-left: calc(-1 * var(--gutter));
   clip-path: url(#story-photo-shape);
 }
 .story-media img {
-  object-position: 46% 50%;
+  object-position: center;
 }
 .story-copy {
   position: relative;
@@ -880,7 +881,7 @@
     padding-bottom: 6rem;
   }
   .story-media {
-    min-height: 31rem;
+    min-height: 0;
   }
   .story h2 {
     font-size: clamp(2.8rem, 6.1vw, 3.5rem);
@@ -1058,7 +1059,7 @@
   }
   .story-media {
     width: calc(100% + 3rem);
-    height: 22rem;
+    height: auto;
     min-height: 0;
     margin-left: 0;
   }
