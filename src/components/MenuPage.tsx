@@ -81,9 +81,6 @@ export function MenuPage({
                   {category.subtitle[language]}
                 </p>
               </div>
-              <p className="catalog-introduction">
-                {category.introduction[language]}
-              </p>
             </div>
             <ul className="catalog-products">
               {category.products.map((product) => (
@@ -113,10 +110,6 @@ export function MenuPage({
             <h2>{copy.contact}</h2>
             <p>{copy.ingredients}</p>
           </div>
-          <a className="button" href={`mailto:${content.visit.email}`}>
-            {copy.contactAction}
-            <span aria-hidden="true">↗</span>
-          </a>
         </div>
         <Wave className="wave-to-footer" />
       </section>

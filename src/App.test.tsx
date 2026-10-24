@@ -58,7 +58,7 @@ describe('Buzzy Bean landing page', () => {
     ).toHaveAttribute('href', 'mailto:coffee@buzzybean.ro')
   })
 
-  test('renders all menu categories and descriptive photography', () => {
+  test('renders all menu categories, hero video, and descriptive photography', () => {
     render(<App />)
 
     for (const category of [
@@ -73,7 +73,7 @@ describe('Buzzy Bean landing page', () => {
     }
 
     expect(
-      screen.getByAltText(
+      screen.getByLabelText(
         'Cafea cu lapte și patiserie servite la o masă de cafenea',
       ),
     ).toBeInTheDocument()

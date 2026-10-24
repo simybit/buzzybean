@@ -1,4 +1,4 @@
-import atmosphereImage from '../assets/cafe-friends-natural.webp'
+import atmosphereImage from '../assets/cafe-atmosphere-selected.jpg'
 import type { SiteContent } from '../content'
 import { BrushHeading, FlightTrail, Sparks, Wave } from './Visuals'
 
@@ -13,8 +13,8 @@ export function Atmosphere({ content }: AtmosphereProps) {
         <div className="atmosphere-media media-frame">
           <img
             src={atmosphereImage}
-            width="1600"
-            height="1109"
+            width="1376"
+            height="768"
             alt={content.accessibility.atmosphereImageAlt}
             loading="lazy"
           />

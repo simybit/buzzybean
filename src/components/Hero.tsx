@@ -1,4 +1,5 @@
 import heroImage from '../assets/coffee-hero-concept.webp'
+import heroVideo from '../assets/hero-video.mp4'
 import type { SiteContent } from '../content'
 import { FlightTrail, Sparks, Wave } from './Visuals'
 
@@ -25,12 +26,17 @@ export function Hero({ content }: HeroProps) {
           <FlightTrail className="hero-trail" />
         </div>
         <div className="hero-media media-frame">
-          <img
-            src={heroImage}
+          <video
+            src={heroVideo}
+            poster={heroImage}
             width="1122"
             height="1402"
-            alt={content.accessibility.heroImageAlt}
-            fetchPriority="high"
+            aria-label={content.accessibility.heroImageAlt}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
           />
         </div>
       </div>

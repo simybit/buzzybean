@@ -35,7 +35,6 @@ export function MenuHighlights({ content, language }: MenuHighlightsProps) {
               <h3>
                 <a href={`/menu/#${category.id}`}>{category.name}</a>
               </h3>
-              <p>{category.introduction[language]}</p>
             </li>
           ))}
         </ul>

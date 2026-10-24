@@ -1,4 +1,4 @@
-import storyImage from '../assets/cafe-interior-natural.webp'
+import storyImage from '../assets/cafe-interior-selected.jpg'
 import mascot from '../assets/buzzy-mascot.webp'
 import type { SiteContent } from '../content'
 import { BrushHeading, FlightTrail, Sparks, Wave } from './Visuals'
@@ -14,8 +14,8 @@ export function Story({ content }: StoryProps) {
         <div className="story-media media-frame">
           <img
             src={storyImage}
-            width="1600"
-            height="1109"
+            width="1376"
+            height="768"
             alt={content.accessibility.storyImageAlt}
             loading="lazy"
           />
