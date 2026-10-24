@@ -14,7 +14,7 @@ export function Footer({
   setLanguage,
   onMenuPage = false,
 }: FooterProps) {
-  const homePrefix = onMenuPage ? '/' : ''
+  const homePrefix = onMenuPage ? import.meta.env.BASE_URL : ''
   return (
     <footer className="site-footer">
       <a
@@ -26,7 +26,7 @@ export function Footer({
       </a>
       <nav aria-label={content.accessibility.footerNavigation}>
         <a href={`${homePrefix}#story`}>{content.nav.story}</a>
-        <a href="/menu/" aria-current={onMenuPage ? 'page' : undefined}>
+        <a href={`${import.meta.env.BASE_URL}menu/`} aria-current={onMenuPage ? 'page' : undefined}>
           {content.nav.menu}
         </a>
         <a href={`${homePrefix}#visit`}>{content.nav.visit}</a>

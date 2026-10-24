@@ -16,7 +16,7 @@ export function Header({
   setLanguage,
   onMenuPage = false,
 }: HeaderProps) {
-  const homePrefix = onMenuPage ? '/' : ''
+  const homePrefix = onMenuPage ? import.meta.env.BASE_URL : ''
   const headerRef = useRef<HTMLElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -108,7 +108,7 @@ export function Header({
             onClick={() => setMenuOpen(false)}
           >
             <a href={`${homePrefix}#story`}>{content.nav.story}</a>
-            <a href="/menu/" aria-current={onMenuPage ? 'page' : undefined}>
+            <a href={`${import.meta.env.BASE_URL}menu/`} aria-current={onMenuPage ? 'page' : undefined}>
               {content.nav.menu}
             </a>
             <a href={`${homePrefix}#visit`}>{content.nav.visit}</a>

@@ -32,7 +32,7 @@ export function MenuPage({
       <section className="catalog-hero" aria-labelledby="catalog-title">
         <div className="page-container catalog-hero-inner">
           <div className="catalog-hero-copy">
-            <a className="catalog-back" href="/">
+            <a className="catalog-back" href={import.meta.env.BASE_URL}>
               <span aria-hidden="true">←</span>
               {copy.backHome}
             </a>

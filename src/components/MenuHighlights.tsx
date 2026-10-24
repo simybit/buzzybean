@@ -33,12 +33,12 @@ export function MenuHighlights({ content, language }: MenuHighlightsProps) {
           {menuCategories.map((category) => (
             <li key={category.id}>
               <h3>
-                <a href={`/menu/#${category.id}`}>{category.name}</a>
+                <a href={`${import.meta.env.BASE_URL}menu/#${category.id}`}>{category.name}</a>
               </h3>
             </li>
           ))}
         </ul>
-        <a className="button full-menu-action" href="/menu/">
+        <a className="button full-menu-action" href={`${import.meta.env.BASE_URL}menu/`}>
           {menuPageCopy[language].fullMenu}
           <span aria-hidden="true">→</span>
         </a>

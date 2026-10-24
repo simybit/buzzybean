@@ -14,7 +14,7 @@ export default function App() {
   const { language, setLanguage } = useLanguage()
   const content = siteContent[language]
   const onMenuPage = /^\/menu(?:\/(?:index\.html)?)?$/.test(
-    window.location.pathname,
+    window.location.pathname.slice(import.meta.env.BASE_URL.length - 1),
   )
 
   useEffect(() => {
