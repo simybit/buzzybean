@@ -75,7 +75,7 @@ export const siteContent: Record<Language, SiteContent> = {
       playMascotAnimation: 'Pornește animația lui Buzzy',
       languageOptions: { ro: 'Română', en: 'English' },
       logoAlt: 'Buzzy Bean Café & Bistro',
-      heroImageAlt: 'Cafea cu lapte și patiserie servite la o masă de cafenea',
+      heroImageAlt: 'Cappuccino, croissant cu miere și albinuța Buzzy într-o cafenea primitoare',
       storyImageAlt:
         'Interior luminos de cafenea cu mese din lemn și plante verzi',
       atmosphereImageAlt:
@@ -88,9 +88,9 @@ export const siteContent: Record<Language, SiteContent> = {
       primaryAction: 'Vino la noi',
     },
     hero: {
-      title: 'Cafea bună. Zile senine.',
+      title: 'Cafea bună, zile mai frumoase',
       description:
-        'Un loc luminos pentru cafea făcută cu grijă, gustări proaspete și pauze fără grabă, în București.',
+        'La Buzzy Bean, fiecare ceașcă e o poveste cu gust de miere.',
       action: 'Descoperă Buzzy Bean',
     },
     story: {
@@ -132,7 +132,7 @@ export const siteContent: Record<Language, SiteContent> = {
       playMascotAnimation: 'Play Buzzy animation',
       languageOptions: { ro: 'Romanian', en: 'English' },
       logoAlt: 'Buzzy Bean Café & Bistro',
-      heroImageAlt: 'Latte and pastry served at a café table',
+      heroImageAlt: 'Cappuccino, honey croissant and Buzzy the bee in a welcoming café',
       storyImageAlt: 'Bright café interior with wooden tables and green plants',
       atmosphereImageAlt: 'Friends spending time together in a bright café',
     },
@@ -143,9 +143,9 @@ export const siteContent: Record<Language, SiteContent> = {
       primaryAction: 'Visit us',
     },
     hero: {
-      title: 'Good coffee. Bright days.',
+      title: 'Good coffee, sweeter days',
       description:
-        'A bright Bucharest spot for carefully made coffee, fresh bites, and unhurried breaks.',
+        'At Buzzy Bean, every cup tells a story with a taste of honey.',
       action: 'Discover Buzzy Bean',
     },
     story: {

@@ -1,265 +1,151 @@
-/* Scoped hero refinement. Video playback and other sections stay unchanged. */
-.hero {
-  isolation: isolate;
-  color: #4a210d;
-  background: linear-gradient(115deg, #fff5df 12%, #f3e1c5 72%, #eacb9b 100%);
-}
-
-.hero::before {
-  top: 8%;
-  left: -6rem;
-  width: clamp(14rem, 30vw, 30rem);
-  height: clamp(12rem, 26vw, 24rem);
-  background: rgba(234, 203, 155, 0.2);
-  pointer-events: none;
-}
-
-.hero::after {
-  position: absolute;
-  z-index: -1;
-  bottom: 8%;
-  left: 22%;
-  width: 22rem;
-  height: 12rem;
-  border-radius: 64% 36% 70% 30%;
-  background: rgba(255, 248, 235, 0.38);
-  content: '';
-  pointer-events: none;
-}
-
-.hero .hero-copy {
-  width: 86%;
-  min-width: 0;
-  padding-block: 1rem 2rem;
-}
-
-.hero h1 {
-  margin: 0;
-  color: #4a210d;
-  font-size: clamp(3.2rem, 6.9vw, 7.6rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  -webkit-text-stroke: 0;
-}
-
-.hero h1 > span {
-  white-space: nowrap;
-}
-
-.hero h1 > span:last-of-type {
-  color: #c98308;
-}
-
-@font-face {
-  font-family: 'Quicksand';
-  src: url('../assets/fonts/quicksand-variable.ttf') format('truetype');
-  font-weight: 300 700;
-  font-style: normal;
+﻿@font-face {
+  font-family: 'Fraunces Hero';
+  src: url('../assets/fonts/fraunces-800-italic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
   font-display: swap;
 }
-.hero .hero-description {
+.honey-hero {
   position: relative;
-  container-type: inline-size;
-  width: 100%;
-  max-width: 35rem;
-  aspect-ratio: 768 / 313;
-  margin-top: clamp(1.5rem, 2.5vw, 2.5rem);
+  isolation: isolate;
+  min-height: min(49vw, 55rem);
+  overflow: hidden;
+  color: #43251d;
+  background: #fff4e8;
+}
+.honey-art { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.honey-scene { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.honey-art::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(90deg, rgb(255 244 232 / 35%), transparent 54%);
+  pointer-events: none;
+}
+.honey-hero .honey-inner {
+  min-height: inherit;
+  padding-top: clamp(3.5rem, 6.5vw, 7rem);
+  padding-bottom: clamp(7rem, 12vw, 13rem);
+}
+.honey-copy { width: 69%; max-width: 63rem; }
+.honey-hero h1 {
+  margin: 0;
+  color: #43251d;
+  font-family: 'Fraunces Hero', Georgia, serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(3.5rem, 6.3vw, 7.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+.honey-hero h1 > span { display: block; white-space: nowrap; }
+.honey-hero h1 em { color: #d98213; font-style: inherit; }
+.honey-description {
+  max-width: 40rem;
+  margin: 1.6rem 0 1.65rem;
+  color: #684c3b;
+  font-size: clamp(1.1rem, 1.85vw, 2rem);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.honey-actions { display: flex; align-items: center; gap: clamp(0.65rem, 1.2vw, 1.4rem); }
+.honey-cta {
+  display: inline-flex;
+  min-height: clamp(3.4rem, 5vw, 5.3rem);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.6rem, 1.05vw, 1.1rem);
+  padding: 0.85rem clamp(1rem, 1.65vw, 1.8rem);
+  border: 1.5px solid #99785d;
+  border-radius: 999px;
+  background: rgb(255 244 232 / 75%);
+  color: #43251d;
+  box-shadow: 0 7px 18px rgb(117 67 23 / 10%);
+  font-size: clamp(0.95rem, 1.4vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 250ms ease, background-color 250ms ease;
+}
+.honey-cta svg { width: 1.35em; height: 1.35em; flex: 0 0 auto; stroke-width: 1.7; }
+.honey-cta-primary { border-color: #ffc44d; background: #ffc44d; box-shadow: 0 8px 20px rgb(217 130 19 / 26%); }
+.honey-watch {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
   padding: 0;
   border: 0;
-  border-radius: 5.8% / 14.2%;
-  background: linear-gradient(115deg, #fff5df, #fff1d5);
-  box-shadow: 0 5px 15px rgb(160 99 23 / 15%);
-  color: #4a210d;
+  background: transparent;
+  color: #684c3b;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
 }
-
-.hero .hero-copy .button {
-  max-width: 100%;
-  min-height: 3.75rem;
-  margin-top: 1.75rem;
-  padding: 0.9rem 2rem;
-  border: 3px solid #4a210d;
-  border-radius: 999px;
-  background: #f5a400;
-  color: #4a210d;
-  font-size: clamp(1rem, 1.25vw, 1.2rem);
-  line-height: 1.35;
-  text-align: center;
-  transition: transform 250ms ease, box-shadow 250ms ease;
+.honey-watch svg { width: 1rem; height: 1rem; }
+.honey-cta:focus-visible, .honey-watch:focus-visible, .honey-film-close:focus-visible { outline: 2px solid #43251d; outline-offset: 5px; }
+@media (hover: hover) {
+  .honey-cta:hover { transform: translateY(-3px); background: #ffebd4; box-shadow: 0 10px 24px rgb(117 67 23 / 19%); }
+  .honey-cta-primary:hover { background: #ffbc35; }
 }
-
-.hero .button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(74, 33, 13, 0.16);
+.honey-cta:active { transform: translateY(1px) scale(0.98); }
+.honey-flight { position: absolute; right: 22%; top: 27%; width: 17%; height: 34%; color: #fff4e8; }
+.honey-flight path { stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 5 9; }
+.honey-bee-float {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  mask-image: radial-gradient(ellipse 11% 32% at 88% 50%, #000 65%, transparent 100%);
 }
-
-.hero .button:focus-visible {
-  outline: 3px solid #4a210d;
-  outline-offset: 5px;
+.honey-steam { position: absolute; left: 73%; top: 20%; width: 5%; height: 28%; }
+.honey-steam i { position: absolute; bottom: 0; left: 20%; width: 40%; height: 75%; border-left: 2px solid rgb(255 244 232 / 55%); border-radius: 50%; opacity: 0; }
+.honey-steam i:nth-child(2) { left: 45%; }
+.honey-steam i:nth-child(3) { left: 65%; }
+.honey-film { width: min(90vw, 30rem); max-height: 88dvh; padding: 2.75rem 0.75rem 0.75rem; border: 0; border-radius: 1.5rem; background: #fff4e8; color: #43251d; }
+.honey-film::backdrop { background: rgb(40 21 15 / 75%); }
+.honey-film video { display: block; width: 100%; max-height: 75dvh; border-radius: 0.75rem; background: #21150d; }
+.honey-film-close { position: absolute; top: 0; right: 0.25rem; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) {
+  .honey-copy h1 { animation: honey-arrive 850ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .honey-description { animation: honey-arrive 850ms 100ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .honey-bee-float { animation: honey-float 6s ease-in-out infinite; }
+  .honey-flight path { animation: honey-trail 18s linear infinite; }
+  .honey-steam i { animation: honey-steam 5s ease-out infinite; }
+  .honey-steam i:nth-child(2) { animation-delay: 1.7s; }
+  .honey-steam i:nth-child(3) { animation-delay: 3.3s; }
 }
-
-.hero .button:active {
-  transform: translateY(0);
+@keyframes honey-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes honey-float { 50% { transform: translateY(-3px); } }
+@keyframes honey-trail { to { stroke-dashoffset: -84; } }
+@keyframes honey-steam { 0% { opacity: 0; transform: translateY(10px) scaleX(0.8); } 35% { opacity: 0.45; } 100% { opacity: 0; transform: translateY(-30px) scaleX(1.3); } }
+@media (max-width: 56rem) {
+  .honey-hero { min-height: 0; }
+  .honey-hero .honey-inner { padding-top: 2.5rem; padding-bottom: 1rem; }
+  .honey-copy { width: 100%; max-width: 40rem; }
+  .honey-hero h1 { font-size: clamp(2.7rem, 7.4vw, 4.4rem); }
+  .honey-description { max-width: 32rem; margin-block: 1.25rem; font-size: 1.15rem; }
+  .honey-art { position: relative; z-index: 0; width: 100%; height: clamp(22rem, 67vw, 36rem); margin-top: -1px; }
+  .honey-hero { display: flex; flex-direction: column; }
+  .honey-inner { order: -1; }
+  .honey-scene { object-position: right bottom; }
+  .honey-art::after { background: linear-gradient(180deg, #fff4e8, transparent 22%); }
+  .honey-bee-float { background-position: right bottom; mask-image: radial-gradient(ellipse 19% 34% at 83% 50%, #000 65%, transparent); }
+  .honey-flight { right: 30%; top: 20%; width: 24%; }
+  .honey-steam { left: 66%; }
+  .honey-cta { min-height: 3.4rem; padding: 0.85rem 1rem; gap: 0.6rem; font-size: 1rem; }
 }
-
-.hero .hero-trail {
-  right: -1rem;
-  bottom: -1rem;
-  width: 15rem;
-  color: #c98308;
-  opacity: 0.35;
+@media (max-width: 34rem) {
+  .honey-hero .honey-inner { padding-inline: 1.25rem; }
+  .honey-hero h1 { font-size: clamp(2.1rem, 10vw, 3.25rem); }
+  .honey-description { font-size: 1.08rem; max-width: 23rem; }
+  .honey-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  .honey-cta:last-child { grid-column: 1 / -1; }
+  .honey-cta { min-height: 3.25rem; padding-inline: 0.85rem; gap: 0.5rem; font-size: 0.9rem; }
+  .honey-cta > svg:last-child { display: none; }
+  .honey-art { height: 22rem; }
 }
-
-.hero .hero-sparks-start,
-.hero .hero-sparks-end {
-  display: none;
-}
-
-/* A stacked layout is necessary here to keep the description clear of the video. */
-@media (min-width: 40.001rem) and (max-width: 56rem) {
-  .hero .hero-inner {
-    display: flex;
-    min-height: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.5rem;
-    padding-top: 2.5rem;
-    padding-bottom: 4rem;
-  }
-
-  .hero .hero-copy {
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: clamp(3.8rem, 8.6vw, 4.8rem);
-  }
-
-  .hero .hero-description {
-    max-width: 38rem;
-  }
-
-  .hero .hero-media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 30rem;
-  }
-}
-
-@media (max-width: 40rem) {
-  .hero .hero-copy {
-    width: 100%;
-    padding-top: 0;
-    padding-bottom: 2rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.5rem, 11.4vw, 4.5rem);
-    line-height: 1.1;
-  }
-
-  .hero .hero-description {
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .hero .hero-copy .button {
-    padding-inline: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .hero::after {
-    left: 0;
-    width: 100%;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero .button {
-    transition: none;
-  }
-
-  .hero .button:hover,
-  .hero .button:active {
-    transform: none;
-  }
-}
-
-
-.hero-description > p {
-  position: relative;
-  z-index: 1;
-  width: 88%;
-  margin: 4.7% 6% 0;
-  padding: 0;
-  font-family: 'Quicksand', var(--font-body);
-  font-size: 5.3cqw;
-  font-weight: 500;
-  line-height: 1.34;
-  text-wrap: initial;
-}
-.hero-description[data-reference-lines='true'] .hero-description-line {
-  display: block;
-  white-space: nowrap;
-}
-.hero-description[data-reference-lines='false'] > p { width: 82%; }
-.hero-description-sparks {
-  position: absolute;
-  top: 5%;
-  right: 3%;
-  width: 9%;
-  height: auto;
-  color: #f5a400;
-  pointer-events: none;
-}
-.hero-description-flourish {
-  position: absolute;
-  left: 4%;
-  bottom: 5%;
-  width: 62%;
-  height: auto;
-  color: #4a210d;
-  pointer-events: none;
-}
-
-/* Video leads the hero; the description follows below. */
-.hero .hero-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: none;
-  min-height: 0;
-  padding-inline: 0;
-  padding-top: 0;
-  padding-bottom: 5rem;
-}
-.hero .hero-copy {
-  width: calc(100% - 2 * var(--gutter));
-  max-width: 35rem;
-  padding-block: 0 1rem;
-}
-.hero .hero-inner > .hero-media {
-  position: relative;
-  inset: auto;
-  flex: 0 0 auto;
-  width: 100%;
-  height: calc(100svh - var(--header-height, 7rem));
-  max-height: 56rem;
-  margin: 0;
-  border-radius: 0;
-  clip-path: none;
-  overflow: hidden;
-  box-shadow: none;
-}
-.hero .hero-inner > .hero-media video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-@media (max-width: 40rem) {
-  .hero .hero-inner { gap: 1.75rem; padding-top: 0; padding-bottom: 4rem; }
+  .honey-cta { transition: none; }
+  .honey-cta:hover, .honey-cta:active { transform: none; }
 }

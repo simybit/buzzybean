@@ -1,5 +1,35 @@
 # Image sources
 
+## Honey Hero — 29 October 2026
+
+- `honey-hero-scene.webp`: generated with the built-in imagegen tool from the
+  owner's `BuzzyBean Café Honey Welcome.png` reference. This is concept imagery,
+  not a photograph of actual premises. No navigation, lettering or buttons are
+  baked into the delivered image; these are implemented as accessible HTML.
+- Generated original: 1774 × 887 PNG; delivery: 1774 × 887 WebP, quality 88,
+  165,842 bytes. The original remains in the image generation library.
+- Generation prompt: Create a production website HERO PHOTOGRAPHIC ASSET ONLY,
+  landscape 2:1. Use the supplied reference with extremely high composition
+  fidelity. Remove all text, logo, navigation, labels, buttons, icons and dotted
+  trails; no lettering anywhere. Crop away the header entirely. Reconstruct the
+  same cozy golden cafe, wooden tabletop, large speckled cappuccino with latte
+  art in the lower right-middle, honey-glazed croissant with nuts and berries
+  on a plate in the lower middle, honey jar and dipper, daisies. Keep the same
+  adorable fluffy golden bee mascot on the far right holding its small white
+  coffee cup, closed eyes, delicate translucent wings; fully visible, no
+  distorted limbs. Bee in the rightmost 23 percent, cappuccino at 72 percent x /
+  72 percent y, pastry at 54 percent x / 87 percent y. Left 48 percent is smooth
+  clean warm ivory #FFF4E8 negative space for an HTML headline. Natural cream
+  transition at center, no hard edges, wooden table visible across the bottom.
+  Rich warm amber cafe bokeh, realistic appetizing food, polished photographic
+  CGI mascot matching the reference. No UI, border, text or watermark.
+- `fonts/fraunces-800-italic.ttf`: Fraunces, Google Fonts, italic weight 800,
+  optical size 72; used only for the Hero title. SIL Open Font License is
+  retained in `fonts/fraunces-OFL.txt`.
+- Existing `hero-video.mp4` was inspected and preserved. Its portrait cafe
+  exterior is available on demand in a native dialog rather than cropped into
+  the new landscape scene; no autoplay or initial video download is required.
+
 ## Delivery optimization — 28 October 2026
 
 - Added `cafe-interior-selected.optimized.webp`, `cafe-atmosphere-selected.optimized.webp`

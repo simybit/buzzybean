@@ -14,7 +14,7 @@ describe('Buzzy Bean landing page', () => {
 
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Cafea bună. Zile senine.',
+      'Cafea bună, zile mai frumoase',
     )
     expect(container.querySelector('header')).toBeInTheDocument()
     expect(container.querySelector('main')).toBeInTheDocument()
@@ -73,8 +73,8 @@ describe('Buzzy Bean landing page', () => {
     }
 
     expect(
-      screen.getByLabelText(
-        'Cafea cu lapte și patiserie servite la o masă de cafenea',
+      screen.getByAltText(
+        'Cappuccino, croissant cu miere și albinuța Buzzy într-o cafenea primitoare',
       ),
     ).toBeInTheDocument()
     expect(
@@ -139,7 +139,7 @@ describe('Buzzy Bean landing page', () => {
     fireEvent.click(englishButton)
 
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'Good coffee. Bright days.',
+      'Good coffee, sweeter days',
     )
     expect(
       screen.getByRole('button', { name: /English.*selected/ }),
@@ -149,7 +149,7 @@ describe('Buzzy Bean landing page', () => {
   test('links the homepage highlights to the full menu and its categories', () => {
     render(<App />)
     const menuLinks = screen.getAllByRole('link', { name: 'Vezi meniul complet' })
-    expect(menuLinks).toHaveLength(2)
+    expect(menuLinks).toHaveLength(1)
     for (const link of menuLinks) expect(link).toHaveAttribute('href', '/menu/')
     expect(
       screen.getByRole('link', { name: 'Honey Pastries' }),
@@ -240,7 +240,7 @@ describe('Buzzy Bean landing page', () => {
 
     expect(container.querySelectorAll('.section-inner')).toHaveLength(4)
     expect(
-      container.querySelector('.hero > .page-container'),
+      container.querySelector('.honey-hero > .page-container'),
     ).toBeInTheDocument()
   })
 })

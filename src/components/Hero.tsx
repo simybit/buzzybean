@@ -1,82 +1,45 @@
-import heroImage from '../assets/coffee-hero-concept.webp'
+﻿import { useRef } from 'react'
+import { ArrowRight, ClipboardList, House, MapPin, Play, X } from 'lucide-react'
+import heroScene from '../assets/honey-hero-scene.webp'
 import heroVideo from '../assets/hero-video.mp4'
 import type { SiteContent } from '../content'
-import { useRef } from 'react'
-import { useAmbientVideo } from '../usePageMotion'
-import { menuPageCopy } from '../menuContent'
-import { FlightTrail, Sparks, Wave } from './Visuals'
 
-interface HeroProps {
-  content: SiteContent
-}
-
-export function Hero({ content }: HeroProps) {
+export function Hero({ content }: { content: SiteContent }) {
+  const romanian = content.languageName !== 'English'
+  const dialogRef = useRef<HTMLDialogElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const reducedMotion = useAmbientVideo(videoRef)
-  const [firstLine, secondLine] = content.hero.title.split('. ')
-  const referenceLines = content.languageName === 'Română'
-  const descriptionLines = referenceLines
-    ? content.hero.description.replace(' făcută', '\nfăcută').replace(' și pauze', '\nși pauze').split('\n')
-    : [content.hero.description]
-
+  const closeVideo = () => {
+    videoRef.current?.pause()
+    dialogRef.current?.close()
+  }
   return (
-    <section className="hero" id="top" aria-labelledby="hero-title">
-      <div className="page-container hero-inner">
-        <div className="hero-media media-frame">
-          <video
-            ref={videoRef}
-            src={heroVideo}
-            poster={heroImage}
-            width="1122"
-            height="1402"
-            aria-label={content.accessibility.heroImageAlt}
-            autoPlay={!reducedMotion}
-            preload="metadata"
-            muted
-            loop
-            playsInline
-            controls
-          />
-        </div>
-        <div className="hero-copy">
-          <h1 id="hero-title">
-            <Sparks className="hero-sparks-start" />
-            <span data-reveal="line">{firstLine}.</span> <span data-reveal="line" data-reveal-delay="90">{secondLine}</span>
-            <Sparks className="hero-sparks-end" />
-          </h1>
-          <div className="hero-description" data-reference-lines={referenceLines} data-reveal="text" data-reveal-delay="120">
-            <p>
-              {descriptionLines.map((line, index) => (
-                <span className="hero-description-line" key={line}>{index > 0 ? ' ' : ''}{line}</span>
-              ))}
-            </p>
-            <svg className="hero-description-sparks" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 28C12 15 17 3 22 6S20 21 12 28ZM28 39C35 24 49 12 53 18S42 34 28 39ZM39 49C50 43 61 43 60 49S48 52 39 49Z" />
-            </svg>
-            <svg className="hero-description-flourish" viewBox="0 0 450 64" fill="none" aria-hidden="true">
-              <g fill="currentColor" stroke="#fff5df" strokeWidth="2">
-                <ellipse cx="25" cy="27" rx="19" ry="14" transform="rotate(47 25 27)" />
-                <path d="M11 11C29 18 19 30 39 41" />
-                <ellipse cx="72" cy="43" rx="20" ry="14" transform="rotate(-23 72 43)" />
-                <path d="M54 52C64 36 77 49 90 34" />
-              </g>
-              <path d="M123 43C231 0 284 91 439 8" stroke="#e5b879" strokeWidth="4" strokeLinecap="round" />
-            </svg>
-          </div>
-          <div className="hero-actions" data-reveal="text" data-reveal-delay="180">
-            <a className="button" href="#story">
-              {content.hero.action}
-            </a>
-            <a className="hero-menu-link" href={`${import.meta.env.BASE_URL}menu/`}>
-              {menuPageCopy[referenceLines ? 'ro' : 'en'].fullMenu}
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-          <FlightTrail className="hero-trail" />
-        </div>
-
+    <section className="honey-hero" id="top" aria-labelledby="hero-title">
+      <div className="honey-art">
+        <img className="honey-scene" src={heroScene} width="1774" height="887" alt={content.accessibility.heroImageAlt} fetchPriority="high" />
+        <div className="honey-bee-float" aria-hidden="true" style={{ backgroundImage: `url(${heroScene})` }} />
+        <div className="honey-steam" aria-hidden="true"><i /><i /><i /></div>
+        <svg className="honey-flight" viewBox="0 0 300 230" fill="none" aria-hidden="true">
+          <path d="M290 170C180 180 60 140 85 80C106 25 167 73 159 105C149 143 37 137 18 220" />
+        </svg>
       </div>
-      <Wave className="wave-to-story" />
+      <div className="page-container honey-inner">
+        <div className="honey-copy">
+          <h1 id="hero-title">
+            {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
+          </h1>
+          <p className="honey-description">{content.hero.description}</p>
+          <div className="honey-actions">
+            <a className="honey-cta" href="#story"><House aria-hidden="true" /><span>{content.nav.story}</span><ArrowRight aria-hidden="true" /></a>
+            <a className="honey-cta honey-cta-primary" href={`${import.meta.env.BASE_URL}menu/`}><ClipboardList aria-hidden="true" /><span>{content.nav.menu}</span><ArrowRight aria-hidden="true" /></a>
+            <a className="honey-cta" href="#visit"><MapPin aria-hidden="true" /><span>{content.nav.visit}</span><ArrowRight aria-hidden="true" /></a>
+          </div>
+          <button type="button" className="honey-watch" onClick={() => dialogRef.current?.showModal()}><Play aria-hidden="true" />{romanian ? 'Vezi-l pe Buzzy' : 'Meet Buzzy'}</button>
+        </div>
+      </div>
+      <dialog className="honey-film" ref={dialogRef} aria-label={romanian ? 'Buzzy la cafenea' : 'Buzzy at the café'} onClose={() => videoRef.current?.pause()} onClick={event => { if (event.target === event.currentTarget) closeVideo() }}>
+        <button className="honey-film-close" type="button" onClick={closeVideo} aria-label={romanian ? 'Închide videoclipul' : 'Close video'}><X aria-hidden="true" /></button>
+        <video ref={videoRef} src={heroVideo} controls playsInline preload="none" aria-label={romanian ? 'Buzzy la cafenea' : 'Buzzy at the café'} />
+      </dialog>
     </section>
   )
 }

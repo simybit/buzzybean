@@ -7,8 +7,8 @@ describe('bilingual site content', () => {
   test('contains_complete_copy_for_each_language', () => {
     expect(Object.keys(siteContent)).toEqual(['ro', 'en'])
 
-    expect(siteContent.ro.hero.title).toBe('Cafea bună. Zile senine.')
-    expect(siteContent.en.hero.title).toBe('Good coffee. Bright days.')
+    expect(siteContent.ro.hero.title).toBe('Cafea bună, zile mai frumoase')
+    expect(siteContent.en.hero.title).toBe('Good coffee, sweeter days')
     expect(menuCategories).toHaveLength(4)
     expect(siteContent.ro.visit.location).toContain('București')
     expect(siteContent.en.visit.location).toContain('Bucharest')
