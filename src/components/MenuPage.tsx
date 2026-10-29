@@ -12,11 +12,11 @@ import { MenuCategoryNav } from './MenuCategoryNav'
 
 // Display the four approved photographs directly from the supplied reference.
 // The source stays intact; CSS frames only each photograph, excluding menu text.
-const comboPhotos: Record<string, { x: number; y: number; width: number }> = {
-  'morning-buzz': { x: 43, y: 344, width: 458 },
-  'little-bee': { x: 530, y: 344, width: 455 },
-  'honey-delight': { x: 43, y: 918, width: 458 },
-  'afternoon-treat': { x: 530, y: 918, width: 455 },
+const comboPhotos: Record<string, { x: number; y: number; width: number; cropTop: number }> = {
+  'morning-buzz': { x: 43, y: 344, width: 458, cropTop: 8 },
+  'little-bee': { x: 530, y: 344, width: 455, cropTop: 6 },
+  'honey-delight': { x: 43, y: 918, width: 458, cropTop: 12 },
+  'afternoon-treat': { x: 530, y: 918, width: 455, cropTop: 8 },
 }
 
 function ProductArtwork({ product }: { product: MenuProduct }) {
@@ -24,7 +24,7 @@ function ProductArtwork({ product }: { product: MenuProduct }) {
   const cropStyle = photo ? {
     '--photo-width': `${1024 / photo.width * 100}%`,
     '--photo-left': `${-photo.x / photo.width * 100}%`,
-    '--photo-top': `${-photo.y / (photo.width / 1.53) * 100}%`,
+    '--photo-top': `${-(photo.y + photo.cropTop) / (photo.width / 1.65) * 100}%`,
   } as CSSProperties : undefined
 
   return (
