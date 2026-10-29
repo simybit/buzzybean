@@ -1,9 +1,10 @@
 .primary-nav {
   gap: clamp(0.65rem, 1.15vw, 1.3rem);
+  justify-self: center;
 }
 .primary-nav a,
 .header-action.button {
-  min-height: 3.4rem;
+  min-height: clamp(3.4rem, 4vw, 4rem);
   justify-content: center;
   gap: 0.65rem;
   padding: 0.75rem clamp(1rem, 1.5vw, 1.75rem);
@@ -13,6 +14,7 @@
   color: #43251d;
   box-shadow: 0 4px 12px rgb(111 65 24 / 10%);
   font-weight: 600;
+  line-height: 1.25;
   transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 250ms ease, box-shadow 250ms ease;
 }
 .primary-nav a::after { content: none; }
@@ -37,17 +39,26 @@
 .primary-nav svg,
 .header-action svg {
   flex: 0 0 auto;
-  width: 1.35rem;
-  height: 1.35rem;
+  width: clamp(1.35rem, 1.65vw, 1.7rem);
+  height: clamp(1.35rem, 1.65vw, 1.7rem);
   transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .header-action.button {
-  background: #ffc34f;
+  background: #ffc44d;
   white-space: nowrap;
   box-shadow: 0 5px 14px rgb(156 94 15 / 18%);
 }
+.header-action.button { justify-self: end; }
+.site-header .menu-toggle {
+  border: 0;
+  border-radius: 999px;
+  background: #ffc44d;
+  color: #43251d;
+  box-shadow: 0 4px 12px rgb(111 65 24 / 12%);
+}
 .primary-nav a:focus-visible,
-.header-action.button:focus-visible {
+.header-action.button:focus-visible,
+.site-header .menu-toggle:focus-visible {
   outline: 2px solid #43251d;
   outline-offset: 4px;
 }
@@ -78,8 +89,9 @@
   .language-switcher button { min-width: 2.2rem; }
 }
 @media (max-width: 56rem) {
-  .primary-nav { gap: 0.75rem; width: 100%; }
-  .primary-nav a { min-height: 3.5rem; }
+  .site-header .header-menu { padding-block: 1.25rem 1.5rem; border-bottom: 0; }
+  .primary-nav { gap: 0.75rem; width: 100%; max-width: 26rem; align-self: center; }
+  .primary-nav a { min-height: 3.5rem; padding-inline: 1.5rem; }
   .header-action.button { display: inline-flex; align-self: center; }
 }
 @media (prefers-reduced-motion: reduce) {
