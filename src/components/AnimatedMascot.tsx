@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import animation from '../assets/buzzy-mascot-animated.webp'
 import mascot from '../assets/buzzy-mascot.webp'
 import type { SiteContent } from '../content'
@@ -10,16 +10,35 @@ export function AnimatedMascot({
 }) {
   const [paused, setPaused] = useState(false)
   const [failed, setFailed] = useState(false)
+  const [suspended, setSuspended] = useState(false)
+  const pictureRef = useRef<HTMLPictureElement>(null)
+
+  useEffect(() => {
+    const picture = pictureRef.current
+    if (!picture || typeof IntersectionObserver === 'undefined') return
+    let inView = true
+    const update = () => setSuspended(!inView || document.hidden)
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting
+      update()
+    })
+    observer.observe(picture)
+    document.addEventListener('visibilitychange', update)
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('visibilitychange', update)
+    }
+  }, [])
   const label = paused
     ? labels.playMascotAnimation
     : labels.pauseMascotAnimation
 
   return (
     <>
-      <picture aria-hidden="true">
+      <picture aria-hidden="true" ref={pictureRef}>
         <source media="(prefers-reduced-motion: reduce)" srcSet={mascot} />
         <img
-          src={paused || failed ? mascot : animation}
+          src={paused || failed || suspended ? mascot : animation}
           width="384"
           height="384"
           alt=""

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Atmosphere } from './components/Atmosphere'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -9,8 +10,11 @@ import { Visit } from './components/Visit'
 import { PhotoShapes } from './components/Visuals'
 import { siteContent } from './content'
 import { useLanguage } from './useLanguage'
+import { usePageMotion } from './usePageMotion'
 
 export default function App() {
+  const shellRef = useRef<HTMLDivElement>(null)
+  usePageMotion(shellRef)
   const { language, setLanguage } = useLanguage()
   const content = siteContent[language]
   const onMenuPage = /^\/menu(?:\/(?:index\.html)?)?$/.test(
@@ -24,7 +28,7 @@ export default function App() {
   }, [language, onMenuPage])
 
   return (
-    <div className="site-shell">
+    <div className="site-shell" ref={shellRef}>
       <PhotoShapes />
       <a className="skip-link" href="#main-content">
         {content.accessibility.skipToContent}
@@ -57,4 +61,3 @@ export default function App() {
     </div>
   )
 }
-import { useEffect } from 'react'

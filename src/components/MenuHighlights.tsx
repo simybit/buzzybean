@@ -12,7 +12,7 @@ export function MenuHighlights({ content, language }: MenuHighlightsProps) {
   return (
     <section className="menu section" id="menu" aria-labelledby="menu-title">
       <div className="page-container section-inner menu-inner">
-        <div className="menu-heading-row">
+        <div className="menu-heading-row" data-reveal="text">
           <Sparks className="menu-sparks" />
           <BrushHeading
             id="menu-title"
@@ -30,10 +30,11 @@ export function MenuHighlights({ content, language }: MenuHighlightsProps) {
           </div>
         </div>
         <ul className="menu-list" role="list">
-          {menuCategories.map((category) => (
-            <li key={category.id}>
+          {menuCategories.map((category, index) => (
+            <li key={category.id} data-reveal="text" data-reveal-delay={index * 50}>
               <h3>
-                <a href={`${import.meta.env.BASE_URL}menu/#${category.id}`}>{category.name}</a>
+                <a className="menu-category-cta" href={`${import.meta.env.BASE_URL}menu/#${category.id}`}>                  <span>{category.name}</span>
+                </a>
               </h3>
             </li>
           ))}

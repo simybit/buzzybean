@@ -1,5 +1,16 @@
 # Image sources
 
+## Delivery optimization — 28 October 2026
+
+- Added `cafe-interior-selected.optimized.webp`, `cafe-atmosphere-selected.optimized.webp`
+  and `sweet-combos-reference.optimized.webp` as browser delivery variants of the
+  existing selected photographs. Canvas WebP encoding at quality 0.94, preserving
+  the original dimensions, framing and content; no generation or retouching.
+- Original JPG/PNG files remain unchanged and serve as `<picture>` fallbacks.
+  The same combo crop coordinates are used for both encodings.
+- Combined delivery size: 1,089,112 bytes instead of 3,931,407 bytes, approximately
+  72% smaller. All other original product assets remain unchanged.
+
 ## Animated Buzzy — owner-supplied video
 
 - Source: `bring-the-photo-to-life-with-subtle-zwrag0k4hf.mp4`, supplied by
@@ -124,7 +135,21 @@ supplied logo is preserved as `buzzy-bean-logo.png`.
 
 The Unsplash License permits free commercial and non-commercial use. Attribution is not required, but is recorded here for provenance and credit.
 
+## Sweet Combos reference photographs
+
+- `sweet-combos-reference.png`: user-supplied `Buzzy Bean Honey Café Menu.png`,
+  provided on 2026-10-25. The user approved using its four photographs for
+  Morning Buzz, Little Bee, Honey Delight, and Afternoon Treat.
+- The source image is unchanged. `MenuPage.tsx` and `menu.css` frame each
+  photograph separately, without displaying the reference's product text.
+- All original individual product assets remain in `products/`.
+
 ## Typography
+
+- Hero description: Quicksand variable, used locally for the rounded reference
+  lettering. Downloaded from Google Fonts on 2026-10-25:
+  https://github.com/google/fonts/tree/main/ofl/quicksand
+  SIL Open Font License; the licence is stored in `fonts/quicksand-OFL.txt`.
 
 - Current display face: Agbalumo, regular — Google Fonts / Tiro Typeworks,
   licensed under the SIL Open Font License 1.1. Source:

@@ -1,20 +1,60 @@
+import type { CSSProperties } from 'react'
 import type { Language, SiteContent } from '../content'
 import { menuCategories, menuPageCopy, type MenuProduct } from '../menuContent'
 import { getProductImage } from '../productImages'
 import menuPhoto from '../assets/coffee-menu-concept.webp'
+import comboReference from '../assets/sweet-combos-reference.png'
+import comboReferenceWebp from '../assets/sweet-combos-reference.optimized.webp'
 import { FlightTrail, Sparks, Wave } from './Visuals'
+import { MenuCategoryNav } from './MenuCategoryNav'
+
+// Display the four approved photographs directly from the supplied reference.
+// The source stays intact; CSS frames only each photograph, excluding menu text.
+const comboPhotos: Record<string, { x: number; y: number; width: number }> = {
+  'morning-buzz': { x: 43, y: 344, width: 458 },
+  'little-bee': { x: 530, y: 344, width: 455 },
+  'honey-delight': { x: 43, y: 918, width: 458 },
+  'afternoon-treat': { x: 530, y: 918, width: 455 },
+}
 
 function ProductArtwork({ product }: { product: MenuProduct }) {
+  const photo = comboPhotos[product.id]
+  const cropStyle = photo ? {
+    '--photo-width': `${1024 / photo.width * 100}%`,
+    '--photo-left': `${-photo.x / photo.width * 100}%`,
+    '--photo-top': `${-photo.y / (photo.width / 1.53) * 100}%`,
+  } as CSSProperties : undefined
+
   return (
-    <img
-      className="product-artwork"
-      src={getProductImage(product.id)}
-      width="512"
-      height="512"
-      alt=""
-      loading="lazy"
-      decoding="async"
-    />
+    <div className={`catalog-product-image${photo ? ' catalog-reference-photo' : ''}`} style={cropStyle}>
+      <div className="product-image-inner">
+        <picture>
+          {photo && <source srcSet={comboReferenceWebp} type="image/webp" />}
+          <img
+            className="product-artwork"
+            src={photo ? comboReference : getProductImage(product.id)}
+            width={photo ? 1024 : 512}
+            height={photo ? 1536 : 512}
+            alt={product.name}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  )
+}
+
+function CardAccent({ index }: { index: number }) {
+  const paths = [
+    'M23 51c-8-3-10-13-6-20s13-9 18-3 0 21-12 23Zm-7-7c8-1 10-8 14-14M48 65c-8-3-10-13-6-20s13-9 18-3 0 21-12 23Zm-7-7c8-1 10-8 14-14',
+    'M23 59c-9-21-2-33 4-27 4 4 2 12 2 12s9-13 15-7-5 18-17 25m20-4 10-4',
+    'M26 25 39 18 52 25v15l-13 8-13-8Zm-13 23 13-8 13 8v15l-13 8-13-8Zm26 0 13-8 13 8v15l-13 8-13-8Z',
+  ]
+  return (
+    <svg className="catalog-card-accent" viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={paths[index % paths.length]} />
+    </svg>
   )
 }
 
@@ -31,7 +71,7 @@ export function MenuPage({
     <div className="catalog-page">
       <section className="catalog-hero" aria-labelledby="catalog-title">
         <div className="page-container catalog-hero-inner">
-          <div className="catalog-hero-copy">
+          <div className="catalog-hero-copy" data-reveal="text">
             <a className="catalog-back" href={import.meta.env.BASE_URL}>
               <span aria-hidden="true">←</span>
               {copy.backHome}
@@ -43,7 +83,7 @@ export function MenuPage({
             <p>{copy.introduction}</p>
             <FlightTrail />
           </div>
-          <div className="catalog-hero-photo media-frame">
+          <div className="catalog-hero-photo media-frame" data-reveal="photo">
             <img
               src={menuPhoto}
               width="1448"
@@ -56,17 +96,9 @@ export function MenuPage({
         <Wave className="wave-to-story" />
       </section>
 
-      <nav className="catalog-category-nav" aria-label={copy.categoriesLabel}>
-        <div className="page-container catalog-category-links">
-          {menuCategories.map((category) => (
-            <a key={category.id} href={`#${category.id}`}>
-              {category.name}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <MenuCategoryNav label={copy.categoriesLabel} />
 
-      {menuCategories.map((category, index) => (
+      {menuCategories.map((category) => (
         <section
           className={`catalog-section catalog-section-${category.id}`}
           id={category.id}
@@ -74,7 +106,7 @@ export function MenuPage({
           key={category.id}
         >
           <div className="page-container">
-            <div className="catalog-section-heading">
+            <div className="catalog-section-heading" data-reveal="text">
               <div>
                 <h2 id={`${category.id}-title`}>{category.name}</h2>
                 <p className="catalog-subtitle">
@@ -83,24 +115,22 @@ export function MenuPage({
               </div>
             </div>
             <ul className="catalog-products">
-              {category.products.map((product) => (
-                <li className="catalog-product" key={product.id}>
+              {category.products.map((product, index) => (
+                <li className="catalog-product" key={product.id} data-reveal="product" data-reveal-delay={(index % 3) * 60}>
                   <ProductArtwork product={product} />
-                  <div className="catalog-product-heading">
+                  <div className="catalog-product-copy">
                     <h3>{product.name}</h3>
                     <span className="catalog-price">
                       {product.price} <span>lei</span>
                       {product.perPiece && <small>{copy.perPiece}</small>}
                     </span>
+                    <p>{product.description[language]}</p>
+                    <CardAccent index={index} />
                   </div>
-                  <p>{product.description[language]}</p>
                 </li>
               ))}
             </ul>
           </div>
-          <Wave
-            className={index % 2 === 0 ? 'wave-to-visit' : 'wave-to-story'}
-          />
         </section>
       ))}
 

@@ -6,6 +6,8 @@ import './styles/tokens.css'
 import './styles/global.css'
 import './styles/components.css'
 import './styles/menu.css'
+import './styles/hero.css'
+import './styles/experience.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

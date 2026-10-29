@@ -148,9 +148,9 @@ describe('Buzzy Bean landing page', () => {
 
   test('links the homepage highlights to the full menu and its categories', () => {
     render(<App />)
-    expect(
-      screen.getByRole('link', { name: 'Vezi meniul complet' }),
-    ).toHaveAttribute('href', '/menu/')
+    const menuLinks = screen.getAllByRole('link', { name: 'Vezi meniul complet' })
+    expect(menuLinks).toHaveLength(2)
+    for (const link of menuLinks) expect(link).toHaveAttribute('href', '/menu/')
     expect(
       screen.getByRole('link', { name: 'Honey Pastries' }),
     ).toHaveAttribute('href', '/menu/#pastries')

@@ -1,0 +1,265 @@
+/* Scoped hero refinement. Video playback and other sections stay unchanged. */
+.hero {
+  isolation: isolate;
+  color: #4a210d;
+  background: linear-gradient(115deg, #fff5df 12%, #f3e1c5 72%, #eacb9b 100%);
+}
+
+.hero::before {
+  top: 8%;
+  left: -6rem;
+  width: clamp(14rem, 30vw, 30rem);
+  height: clamp(12rem, 26vw, 24rem);
+  background: rgba(234, 203, 155, 0.2);
+  pointer-events: none;
+}
+
+.hero::after {
+  position: absolute;
+  z-index: -1;
+  bottom: 8%;
+  left: 22%;
+  width: 22rem;
+  height: 12rem;
+  border-radius: 64% 36% 70% 30%;
+  background: rgba(255, 248, 235, 0.38);
+  content: '';
+  pointer-events: none;
+}
+
+.hero .hero-copy {
+  width: 86%;
+  min-width: 0;
+  padding-block: 1rem 2rem;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #4a210d;
+  font-size: clamp(3.2rem, 6.9vw, 7.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  -webkit-text-stroke: 0;
+}
+
+.hero h1 > span {
+  white-space: nowrap;
+}
+
+.hero h1 > span:last-of-type {
+  color: #c98308;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets/fonts/quicksand-variable.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+.hero .hero-description {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  max-width: 35rem;
+  aspect-ratio: 768 / 313;
+  margin-top: clamp(1.5rem, 2.5vw, 2.5rem);
+  padding: 0;
+  border: 0;
+  border-radius: 5.8% / 14.2%;
+  background: linear-gradient(115deg, #fff5df, #fff1d5);
+  box-shadow: 0 5px 15px rgb(160 99 23 / 15%);
+  color: #4a210d;
+}
+
+.hero .hero-copy .button {
+  max-width: 100%;
+  min-height: 3.75rem;
+  margin-top: 1.75rem;
+  padding: 0.9rem 2rem;
+  border: 3px solid #4a210d;
+  border-radius: 999px;
+  background: #f5a400;
+  color: #4a210d;
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.35;
+  text-align: center;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.hero .button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(74, 33, 13, 0.16);
+}
+
+.hero .button:focus-visible {
+  outline: 3px solid #4a210d;
+  outline-offset: 5px;
+}
+
+.hero .button:active {
+  transform: translateY(0);
+}
+
+.hero .hero-trail {
+  right: -1rem;
+  bottom: -1rem;
+  width: 15rem;
+  color: #c98308;
+  opacity: 0.35;
+}
+
+.hero .hero-sparks-start,
+.hero .hero-sparks-end {
+  display: none;
+}
+
+/* A stacked layout is necessary here to keep the description clear of the video. */
+@media (min-width: 40.001rem) and (max-width: 56rem) {
+  .hero .hero-inner {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero .hero-copy {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.8rem, 8.6vw, 4.8rem);
+  }
+
+  .hero .hero-description {
+    max-width: 38rem;
+  }
+
+  .hero .hero-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 30rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .hero .hero-copy {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 11.4vw, 4.5rem);
+    line-height: 1.1;
+  }
+
+  .hero .hero-description {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero .hero-copy .button {
+    padding-inline: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero::after {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .button {
+    transition: none;
+  }
+
+  .hero .button:hover,
+  .hero .button:active {
+    transform: none;
+  }
+}
+
+
+.hero-description > p {
+  position: relative;
+  z-index: 1;
+  width: 88%;
+  margin: 4.7% 6% 0;
+  padding: 0;
+  font-family: 'Quicksand', var(--font-body);
+  font-size: 5.3cqw;
+  font-weight: 500;
+  line-height: 1.34;
+  text-wrap: initial;
+}
+.hero-description[data-reference-lines='true'] .hero-description-line {
+  display: block;
+  white-space: nowrap;
+}
+.hero-description[data-reference-lines='false'] > p { width: 82%; }
+.hero-description-sparks {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  width: 9%;
+  height: auto;
+  color: #f5a400;
+  pointer-events: none;
+}
+.hero-description-flourish {
+  position: absolute;
+  left: 4%;
+  bottom: 5%;
+  width: 62%;
+  height: auto;
+  color: #4a210d;
+  pointer-events: none;
+}
+
+/* Video leads the hero; the description follows below. */
+.hero .hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  padding-inline: 0;
+  padding-top: 0;
+  padding-bottom: 5rem;
+}
+.hero .hero-copy {
+  width: calc(100% - 2 * var(--gutter));
+  max-width: 35rem;
+  padding-block: 0 1rem;
+}
+.hero .hero-inner > .hero-media {
+  position: relative;
+  inset: auto;
+  flex: 0 0 auto;
+  width: 100%;
+  height: calc(100svh - var(--header-height, 7rem));
+  max-height: 56rem;
+  margin: 0;
+  border-radius: 0;
+  clip-path: none;
+  overflow: hidden;
+  box-shadow: none;
+}
+.hero .hero-inner > .hero-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 40rem) {
+  .hero .hero-inner { gap: 1.75rem; padding-top: 0; padding-bottom: 4rem; }
+}
