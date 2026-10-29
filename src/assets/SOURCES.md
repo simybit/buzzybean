@@ -2,6 +2,11 @@
 
 ## Honey Hero — 29 October 2026
 
+- Typography refinement: `fonts/shrikhand.ttf`, Shrikhand regular (Google Fonts,
+  SIL OFL, retained in `fonts/shrikhand-OFL.txt`), replaces Fraunces in the Hero
+  to better match the reference's heavy, rounded, slanted lettering. Original
+  font assets are retained. Copy stays live HTML in both languages.
+
 - `honey-hero-scene.webp`: generated with the built-in imagegen tool from the
   owner's `BuzzyBean Café Honey Welcome.png` reference. This is concept imagery,
   not a photograph of actual premises. No navigation, lettering or buttons are
