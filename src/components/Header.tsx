@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, ClipboardList, House, MapPin } from 'lucide-react'
+import { ClipboardList, House, MapPin } from 'lucide-react'
 
 import { siteContent, type Language, type SiteContent } from '../content'
 import { Brand } from './Brand'
@@ -178,14 +178,6 @@ export function Header({
             })}
           </div>
 
-          <a
-            className="button button-small header-action"
-            href={`${homePrefix}#visit`}
-            onClick={() => setMenuOpen(false)}
-          >
-            {content.nav.primaryAction}
-            <ArrowRight aria-hidden="true" strokeWidth={1.7} />
-          </a>
         </div>
       </div>
     </header>
