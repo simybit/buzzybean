@@ -24,9 +24,9 @@
 }
 .honey-hero .honey-inner {
   min-height: inherit;
-  padding-top: clamp(2.5rem, 3.5vw, 4rem);
+  padding-top: clamp(3rem, 6.2vw, 6.75rem);
   padding-inline: clamp(1.5rem, 5.7vw, 7.5rem);
-  padding-bottom: clamp(7rem, 12vw, 13rem);
+  padding-bottom: clamp(6rem, 8vw, 9rem);
 }
 .honey-copy { width: 72%; max-width: 65rem; }
 .honey-eyebrow {
@@ -39,7 +39,7 @@
 }
 .honey-hero h1 {
   margin: 0;
-  color: #37160d;
+  color: #43251d;
   font-family: 'Shrikhand Hero', Georgia, serif;
   font-weight: 400;
   font-style: normal;
@@ -57,7 +57,7 @@
   line-height: 1.35;
   text-wrap: pretty;
 }
-.honey-actions { display: flex; align-items: center; gap: clamp(0.65rem, 1.2vw, 1.4rem); margin-bottom: clamp(1.5rem, 2vw, 2.25rem); }
+.honey-actions { display: flex; align-items: center; gap: clamp(0.65rem, 1.2vw, 1.4rem); }
 .honey-cta {
   display: inline-flex;
   min-height: clamp(3.4rem, 5vw, 5.3rem);
@@ -150,8 +150,8 @@
   .honey-description { font-size: 1.08rem; max-width: 23rem; }
   .honey-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
   .honey-cta:last-child { grid-column: 1 / -1; }
-  .honey-cta { min-height: 3.25rem; padding-inline: 0.85rem; gap: 0.5rem; font-size: 0.9rem; }
-  .honey-cta > svg:last-child { display: none; }
+  .honey-cta { min-height: 3.25rem; padding-inline: 0.65rem; gap: 0.4rem; font-size: 0.9rem; }
+  .honey-cta > svg:last-child { width: 1.1em; height: 1.1em; }
   .honey-art { height: 22rem; }
 }
 @media (prefers-reduced-motion: reduce) {

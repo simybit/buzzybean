@@ -1,5 +1,6 @@
 ﻿import heroScene from '../assets/honey-hero-scene.webp'
 import type { SiteContent } from '../content'
+import { ArrowRight, ClipboardList, House, MapPin } from 'lucide-react'
 
 export function Hero({ content }: { content: SiteContent }) {
   const romanian = content.languageName !== 'English'
@@ -19,6 +20,11 @@ export function Hero({ content }: { content: SiteContent }) {
             {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
           </h1>
           <p className="honey-description">{content.hero.description}</p>
+          <div className="honey-actions">
+            <a className="honey-cta" href="#story"><House aria-hidden="true" /><span>{content.nav.story}</span><ArrowRight aria-hidden="true" /></a>
+            <a className="honey-cta honey-cta-primary" href={`${import.meta.env.BASE_URL}menu/`}><ClipboardList aria-hidden="true" /><span>{content.nav.menu}</span><ArrowRight aria-hidden="true" /></a>
+            <a className="honey-cta" href="#visit"><MapPin aria-hidden="true" /><span>{content.nav.visit}</span><ArrowRight aria-hidden="true" /></a>
+          </div>
         </div>
       </div>
     </section>
