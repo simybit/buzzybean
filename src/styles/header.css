@@ -1,0 +1,97 @@
+.primary-nav {
+  gap: clamp(0.65rem, 1.15vw, 1.3rem);
+}
+.primary-nav a,
+.header-action.button {
+  min-height: 3.4rem;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.75rem clamp(1rem, 1.5vw, 1.75rem);
+  border: 0;
+  border-radius: 999px;
+  background: #fff4e8;
+  color: #43251d;
+  box-shadow: 0 4px 12px rgb(111 65 24 / 10%);
+  font-weight: 600;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 250ms ease, box-shadow 250ms ease;
+}
+.primary-nav a::after { content: none; }
+.primary-nav a > span { position: relative; }
+.primary-nav a > span::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  content: '';
+  background: #e99b24;
+  transform: scaleX(0);
+  transition: transform 250ms ease;
+}
+.primary-nav a[aria-current] {
+  background: #fcebd5;
+  box-shadow: 0 5px 14px rgb(111 65 24 / 15%);
+}
+.primary-nav a[aria-current] > span::after { transform: scaleX(1); }
+.primary-nav svg,
+.header-action svg {
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.header-action.button {
+  background: #ffc34f;
+  white-space: nowrap;
+  box-shadow: 0 5px 14px rgb(156 94 15 / 18%);
+}
+.primary-nav a:focus-visible,
+.header-action.button:focus-visible {
+  outline: 2px solid #43251d;
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .primary-nav a:hover,
+  .header-action.button:hover {
+    transform: translateY(-3px);
+    background: #ffebcd;
+    box-shadow: 0 8px 18px rgb(111 65 24 / 18%);
+  }
+  .primary-nav a:hover svg { transform: scale(1.06); }
+  .header-action.button:hover { background: #ffbb38; }
+  .header-action:hover svg { transform: translateX(3px); }
+}
+.primary-nav a:active,
+.header-action.button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 5px rgb(111 65 24 / 12%);
+}
+@media (min-width: 56.001rem) and (max-width: 74rem) {
+  .header-inner { grid-template-columns: auto 1fr auto auto; gap: 0.6rem; }
+  .header-action.button { display: inline-flex; padding-inline: 1rem; font-size: 0.9rem; }
+  .primary-nav { gap: 0.5rem; }
+  .primary-nav a { gap: 0.4rem; padding-inline: 0.8rem; font-size: 0.9rem; }
+  .header-inner .brand-name { font-size: 2rem; }
+  .header-inner .brand-mascot { width: 3.5rem; }
+  .header-inner .brand-subtitle { font-size: 0.5rem; }
+  .language-switcher button { min-width: 2.2rem; }
+}
+@media (max-width: 56rem) {
+  .primary-nav { gap: 0.75rem; width: 100%; }
+  .primary-nav a { min-height: 3.5rem; }
+  .header-action.button { display: inline-flex; align-self: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav a,
+  .primary-nav a > span::after,
+  .primary-nav svg,
+  .header-action.button,
+  .header-action svg { transition: none; }
+  .primary-nav a:hover,
+  .primary-nav a:active,
+  .primary-nav a:hover svg,
+  .header-action.button:hover,
+  .header-action.button:active,
+  .header-action:hover svg { transform: none; }
+}

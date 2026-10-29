@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ArrowRight, ClipboardList, House, MapPin } from 'lucide-react'
 
 import { siteContent, type Language, type SiteContent } from '../content'
 import { Brand } from './Brand'
@@ -20,6 +21,39 @@ export function Header({
   const headerRef = useRef<HTMLElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+
+  useEffect(() => {
+    if (onMenuPage) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const threshold = (headerRef.current?.getBoundingClientRect().bottom ?? 0) + window.innerHeight * 0.25
+      let active = ''
+      for (const id of ['story', 'menu', 'visit']) {
+        const section = document.getElementById(id)
+        if (section && section.getBoundingClientRect().top <= threshold) active = id
+      }
+      setActiveSection(active)
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
+    const onHash = () => {
+      const id = window.location.hash.slice(1)
+      if (['story', 'menu', 'visit'].includes(id)) setActiveSection(id)
+      else schedule()
+    }
+    update()
+    onHash()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    window.addEventListener('hashchange', onHash)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      window.removeEventListener('hashchange', onHash)
+    }
+  }, [onMenuPage])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -107,11 +141,15 @@ export function Header({
             aria-label={content.accessibility.mainNavigation}
             onClick={() => setMenuOpen(false)}
           >
-            <a href={`${homePrefix}#story`}>{content.nav.story}</a>
-            <a href={`${import.meta.env.BASE_URL}menu/`} aria-current={onMenuPage ? 'page' : undefined}>
-              {content.nav.menu}
+            <a href={`${homePrefix}#story`} aria-current={!onMenuPage && activeSection === 'story' ? 'location' : undefined}>
+              <House aria-hidden="true" strokeWidth={1.7} /><span>{content.nav.story}</span>
             </a>
-            <a href={`${homePrefix}#visit`}>{content.nav.visit}</a>
+            <a href={`${import.meta.env.BASE_URL}menu/`} aria-current={onMenuPage ? 'page' : activeSection === 'menu' ? 'location' : undefined}>
+              <ClipboardList aria-hidden="true" strokeWidth={1.7} /><span>{content.nav.menu}</span>
+            </a>
+            <a href={`${homePrefix}#visit`} aria-current={!onMenuPage && activeSection === 'visit' ? 'location' : undefined}>
+              <MapPin aria-hidden="true" strokeWidth={1.7} /><span>{content.nav.visit}</span>
+            </a>
           </nav>
 
           <div
@@ -146,6 +184,7 @@ export function Header({
             onClick={() => setMenuOpen(false)}
           >
             {content.nav.primaryAction}
+            <ArrowRight aria-hidden="true" strokeWidth={1.7} />
           </a>
         </div>
       </div>

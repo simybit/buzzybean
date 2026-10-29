@@ -8,6 +8,7 @@ import './styles/components.css'
 import './styles/menu.css'
 import './styles/hero.css'
 import './styles/experience.css'
+import './styles/header.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
