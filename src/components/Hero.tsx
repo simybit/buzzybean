@@ -24,7 +24,6 @@ export function Hero({ content }: { content: SiteContent }) {
       </div>
       <div className="page-container honey-inner">
         <div className="honey-copy">
-          <p className="honey-eyebrow">Café &amp; Bistro</p>
           <h1 id="hero-title">
             {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
           </h1>
