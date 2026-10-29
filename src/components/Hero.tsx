@@ -24,16 +24,16 @@ export function Hero({ content }: { content: SiteContent }) {
       </div>
       <div className="page-container honey-inner">
         <div className="honey-copy">
-          <p className="honey-eyebrow">Café &amp; Bistro</p>
-          <h1 id="hero-title">
-            {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
-          </h1>
-          <p className="honey-description">{content.hero.description}</p>
           <div className="honey-actions">
             <a className="honey-cta" href="#story"><House aria-hidden="true" /><span>{content.nav.story}</span><ArrowRight aria-hidden="true" /></a>
             <a className="honey-cta honey-cta-primary" href={`${import.meta.env.BASE_URL}menu/`}><ClipboardList aria-hidden="true" /><span>{content.nav.menu}</span><ArrowRight aria-hidden="true" /></a>
             <a className="honey-cta" href="#visit"><MapPin aria-hidden="true" /><span>{content.nav.visit}</span><ArrowRight aria-hidden="true" /></a>
           </div>
+          <p className="honey-eyebrow">Café &amp; Bistro</p>
+          <h1 id="hero-title">
+            {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
+          </h1>
+          <p className="honey-description">{content.hero.description}</p>
           <button type="button" className="honey-watch" onClick={() => dialogRef.current?.showModal()}><Play aria-hidden="true" />{romanian ? 'Vezi-l pe Buzzy' : 'Meet Buzzy'}</button>
         </div>
       </div>
