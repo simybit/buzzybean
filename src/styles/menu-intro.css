@@ -1,0 +1,47 @@
+/* Compact menu introduction; later product sections keep their existing rhythm. */
+.catalog-page .catalog-hero-inner {
+  min-height: 24rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding-block: 1rem 3rem;
+}
+.catalog-hero .catalog-back { margin-bottom: 0.6rem; }
+.catalog-page .catalog-hero h1 {
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+  line-height: 1.04;
+}
+.catalog-page .catalog-hero-copy > p {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.5;
+}
+.catalog-page .catalog-hero-copy > .flight-trail {
+  width: 10rem;
+  right: 0.5rem;
+  bottom: -2.25rem;
+  opacity: 0.45;
+}
+.catalog-hero > .section-wave { height: 1.75rem; }
+.catalog-page .catalog-category-links { padding-block: 0.5rem; }
+.catalog-page .catalog-category-links a { min-height: 3rem; padding-block: 0.6rem; }
+.catalog-category-nav + .catalog-section { padding-top: 1.25rem; }
+.catalog-category-nav + .catalog-section .catalog-section-heading { margin-bottom: 1rem; }
+@media (max-width: 56rem) {
+  .catalog-page .catalog-hero-inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-block: 0.65rem 2rem;
+  }
+  .catalog-page .catalog-hero h1 { max-width: 18ch; font-size: clamp(2.3rem, 6.5vw, 3.6rem); }
+  .catalog-page .catalog-hero-copy > p { margin-top: 0.75rem; }
+  .catalog-hero > .section-wave { height: 1.25rem; }
+  .catalog-page .catalog-hero-photo { max-width: 30rem; justify-self: center; }
+  .catalog-category-nav + .catalog-section { padding-top: 1rem; }
+  .catalog-category-nav + .catalog-section .catalog-section-heading { margin-bottom: 0.75rem; }
+}
+@media (max-width: 40rem) {
+  .catalog-page .catalog-hero h1 { font-size: clamp(2rem, 8.7vw, 3.1rem); }
+  .catalog-page .catalog-category-links { padding-block: 0.35rem; gap: 0.35rem; }
+  .catalog-page .catalog-category-links a { min-height: 2.75rem; padding-block: 0.45rem; }
+}

@@ -9,6 +9,7 @@ import './styles/menu.css'
 import './styles/hero.css'
 import './styles/experience.css'
 import './styles/header.css'
+import './styles/menu-intro.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
