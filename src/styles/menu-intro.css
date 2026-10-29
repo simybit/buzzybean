@@ -1,10 +1,11 @@
 /* Compact menu introduction; later product sections keep their existing rhythm. */
 .catalog-page .catalog-hero-inner {
-  min-height: 24rem;
-  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 0;
+  grid-template-columns: 1fr;
   gap: clamp(1.5rem, 3vw, 3rem);
   padding-block: 1rem 3rem;
 }
+.catalog-page .catalog-hero-copy { max-width: 48rem; }
 .catalog-hero .catalog-back { margin-bottom: 0.6rem; }
 .catalog-page .catalog-hero h1 {
   font-size: clamp(3rem, 4.5vw, 5.2rem);

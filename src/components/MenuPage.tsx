@@ -1,10 +1,7 @@
-import { useRef, type CSSProperties } from 'react'
+import type { CSSProperties } from 'react'
 import type { Language, SiteContent } from '../content'
 import { menuCategories, menuPageCopy, type MenuProduct } from '../menuContent'
 import { getProductImage } from '../productImages'
-import menuPhoto from '../assets/menu-promo-poster.webp'
-import menuPromo from '../assets/menu-promo.mp4'
-import { useAmbientVideo } from '../usePageMotion'
 import comboReference from '../assets/sweet-combos-reference.png'
 import comboReferenceWebp from '../assets/sweet-combos-reference.optimized.webp'
 import { FlightTrail, Sparks, Wave } from './Visuals'
@@ -67,8 +64,6 @@ export function MenuPage({
   content: SiteContent
 }) {
   const copy = menuPageCopy[language]
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const reducedMotion = useAmbientVideo(videoRef)
 
   return (
     <div className="catalog-page">
@@ -85,22 +80,6 @@ export function MenuPage({
             </h1>
             <p>{copy.introduction}</p>
             <FlightTrail />
-          </div>
-          <div className="catalog-hero-photo media-frame" data-reveal="photo">
-            <video
-              ref={videoRef}
-              src={menuPromo}
-              poster={menuPhoto}
-              width="1920"
-              height="1080"
-              aria-label={language === 'ro' ? 'Video promoțional Buzzy Bean' : 'Buzzy Bean promotional video'}
-              autoPlay={!reducedMotion}
-              muted
-              loop
-              playsInline
-              controls
-              preload="metadata"
-            />
           </div>
         </div>
         <Wave className="wave-to-story" />
