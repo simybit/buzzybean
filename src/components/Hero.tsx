@@ -1,5 +1,5 @@
 ﻿import { useRef } from 'react'
-import { ArrowRight, ClipboardList, House, MapPin, Play, X } from 'lucide-react'
+import { Play, X } from 'lucide-react'
 import heroScene from '../assets/honey-hero-scene.webp'
 import heroVideo from '../assets/hero-video.mp4'
 import type { SiteContent } from '../content'
@@ -24,11 +24,6 @@ export function Hero({ content }: { content: SiteContent }) {
       </div>
       <div className="page-container honey-inner">
         <div className="honey-copy">
-          <div className="honey-actions">
-            <a className="honey-cta" href="#story"><House aria-hidden="true" /><span>{content.nav.story}</span><ArrowRight aria-hidden="true" /></a>
-            <a className="honey-cta honey-cta-primary" href={`${import.meta.env.BASE_URL}menu/`}><ClipboardList aria-hidden="true" /><span>{content.nav.menu}</span><ArrowRight aria-hidden="true" /></a>
-            <a className="honey-cta" href="#visit"><MapPin aria-hidden="true" /><span>{content.nav.visit}</span><ArrowRight aria-hidden="true" /></a>
-          </div>
           <p className="honey-eyebrow">Café &amp; Bistro</p>
           <h1 id="hero-title">
             {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
