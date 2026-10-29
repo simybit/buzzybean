@@ -1,5 +1,15 @@
 # Image sources
 
+## Menu promotional video — 29 October 2026
+
+- `menu-promo.mp4`: owner-supplied
+  `Crearea_unui_videoclip_promoțional_751b5644_1080p.mp4`, copied unchanged.
+  1920 × 1080, 9.963 seconds, 3,213,532 bytes. Replaces the coffee photograph
+  beside the menu introduction. Native controls, muted inline looping playback;
+  automatic playback pauses outside the viewport and for reduced motion.
+- `menu-promo-poster.webp`: frame at 0.15 seconds, extracted from that video at
+  960 × 540 and encoded to WebP quality 85 for the initial preview.
+
 ## Honey Hero — 29 October 2026
 
 - Typography refinement: `fonts/shrikhand.ttf`, Shrikhand regular (Google Fonts,
