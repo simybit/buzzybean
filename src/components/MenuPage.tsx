@@ -134,15 +134,6 @@ export function MenuPage({
         </section>
       ))}
 
-      <section className="catalog-contact">
-        <div className="page-container catalog-contact-inner">
-          <div>
-            <h2>{copy.contact}</h2>
-            <p>{copy.ingredients}</p>
-          </div>
-        </div>
-        <Wave className="wave-to-footer" />
-      </section>
     </div>
   )
 }
