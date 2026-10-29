@@ -1,5 +1,5 @@
-﻿import { fireEvent, render, screen } from '@testing-library/react'
-import { expect, test, vi } from 'vitest'
+﻿import { render, screen } from '@testing-library/react'
+import { expect, test } from 'vitest'
 import { siteContent } from '../content'
 import { Hero } from './Hero'
 
@@ -15,14 +15,9 @@ test('renders reference copy without duplicate navigation in both languages', ()
   }
 })
 
-test('keeps Buzzy video available on demand with playback controls', () => {
-  const show = vi.fn(function (this: HTMLDialogElement) { this.open = true })
-  Object.defineProperty(HTMLDialogElement.prototype, 'showModal', { value: show, configurable: true })
-  render(<Hero content={siteContent.ro} />)
-  expect(document.querySelector('video')).not.toHaveAttribute('autoplay')
-  fireEvent.click(screen.getByRole('button', { name: 'Vezi-l pe Buzzy' }))
-  expect(show).toHaveBeenCalled()
-  expect(document.querySelector('video')).toHaveAttribute('controls')
-  expect(document.querySelector('video')).toHaveAttribute('preload', 'none')
-  Reflect.deleteProperty(HTMLDialogElement.prototype, 'showModal')
+test('does not render a video or playback control', () => {
+  const { container } = render(<Hero content={siteContent.ro} />)
+  expect(container.querySelector('video')).toBeNull()
+  expect(container.querySelector('dialog')).toBeNull()
+  expect(screen.queryByRole('button')).not.toBeInTheDocument()
 })

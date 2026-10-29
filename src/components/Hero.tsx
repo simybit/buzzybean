@@ -1,17 +1,8 @@
-﻿import { useRef } from 'react'
-import { Play, X } from 'lucide-react'
-import heroScene from '../assets/honey-hero-scene.webp'
-import heroVideo from '../assets/hero-video.mp4'
+﻿import heroScene from '../assets/honey-hero-scene.webp'
 import type { SiteContent } from '../content'
 
 export function Hero({ content }: { content: SiteContent }) {
   const romanian = content.languageName !== 'English'
-  const dialogRef = useRef<HTMLDialogElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const closeVideo = () => {
-    videoRef.current?.pause()
-    dialogRef.current?.close()
-  }
   return (
     <section className="honey-hero" id="top" aria-labelledby="hero-title">
       <div className="honey-art">
@@ -28,13 +19,8 @@ export function Hero({ content }: { content: SiteContent }) {
             {romanian ? <><span>Cafea bună,</span>{' '}<span>zile mai <em>frumoase</em></span></> : <><span>Good coffee,</span>{' '}<span><em>sweeter</em> days</span></>}
           </h1>
           <p className="honey-description">{content.hero.description}</p>
-          <button type="button" className="honey-watch" onClick={() => dialogRef.current?.showModal()}><Play aria-hidden="true" />{romanian ? 'Vezi-l pe Buzzy' : 'Meet Buzzy'}</button>
         </div>
       </div>
-      <dialog className="honey-film" ref={dialogRef} aria-label={romanian ? 'Buzzy la cafenea' : 'Buzzy at the café'} onClose={() => videoRef.current?.pause()} onClick={event => { if (event.target === event.currentTarget) closeVideo() }}>
-        <button className="honey-film-close" type="button" onClick={closeVideo} aria-label={romanian ? 'Închide videoclipul' : 'Close video'}><X aria-hidden="true" /></button>
-        <video ref={videoRef} src={heroVideo} controls playsInline preload="none" aria-label={romanian ? 'Buzzy la cafenea' : 'Buzzy at the café'} />
-      </dialog>
     </section>
   )
 }
