@@ -11,6 +11,7 @@ import { PhotoShapes } from './components/Visuals'
 import { siteContent } from './content'
 import { useLanguage } from './useLanguage'
 import { usePageMotion } from './usePageMotion'
+import { BuzzyCursor } from './components/BuzzyCursor'
 
 export default function App() {
   const shellRef = useRef<HTMLDivElement>(null)
@@ -30,6 +31,7 @@ export default function App() {
   return (
     <div className="site-shell" ref={shellRef}>
       <PhotoShapes />
+      <BuzzyCursor />
       <a className="skip-link" href="#main-content">
         {content.accessibility.skipToContent}
       </a>

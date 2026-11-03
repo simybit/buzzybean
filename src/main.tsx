@@ -11,6 +11,7 @@ import './styles/experience.css'
 import './styles/header.css'
 import './styles/menu-intro.css'
 import './styles/sweet-combos.css'
+import './styles/cursor.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
